@@ -2,7 +2,7 @@ import './App.css';
 import Create from './Components/create';
 import Read from './Components/read';
 import Update from './Components/update';
-
+// import Sidebar from './Components/sideBar'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -24,6 +24,8 @@ function App() {
             <Route exact path='create' element={<Create/>}></Route>
             <Route exact path='read'  element={<Read/>}></Route>
             <Route exact path='update' element={<Update/>}></Route>
+            {/* <Route exact path='sidebar' element={<Sidebar/>}></Route> */}
+
       </Routes>
       </div>
     </Router>
