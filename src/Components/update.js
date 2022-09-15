@@ -18,15 +18,15 @@ export default function Update() {
 
 const updateAPIData = () => {
     console.log(id)
-    axios.put(`https://6315a3bb33e540a6d380ad11.mockapi.io/user/${id}`, {
-         firstName,
+    axios.put(`/user/${id}`, {
+        id, 
+        firstName,
          lastName,
-         checkbox
 	})
 }
 
     return (
-        <div>
+        <div className='main'>
             <Form className="create-form">
                 <Form.Field>
                     <label>First Name</label>
@@ -36,9 +36,9 @@ const updateAPIData = () => {
                     <label>Last Name</label>
                     <input placeholder='Last Name' value={lastName} onChange={(e) => setLastName(e.target.value)}/>
                 </Form.Field>
-                <Form.Field>
+                {/* <Form.Field>
                 <Checkbox label='I agree to the Terms and Conditions' checked={checkbox} onChange={(e) => setCheckbox(!checkbox)}/>
-                </Form.Field>
+                </Form.Field> */}
                 <Link to='/read'>
                 <Button type='submit'  onClick={updateAPIData}>Update</Button>
                 </Link>

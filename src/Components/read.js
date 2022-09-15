@@ -35,25 +35,27 @@ import { Link } from 'react-router-dom';
         localStorage.setItem('ID', id);
         localStorage.setItem('First Name', firstName);
         localStorage.setItem('Last Name', lastName);
-        localStorage.setItem('Checkbox Value', checkbox)
+       // localStorage.setItem('Checkbox Value', checkbox)
 
     };
     useEffect(() => {
-        axios.get(`https://6315a3bb33e540a6d380ad11.mockapi.io/user`)
+        axios.get(`/user`)
             .then((response) => {
+                console.log(response.data);
                 setAPIData(response.data);
             })
         }, [])
  
     const onDelete = (id) => {
-        axios.delete(`https://6315a3bb33e540a6d380ad11.mockapi.io/user/${id}`)
+        axios.delete(`/user/${id}`)
         .then(() => {
             getData();
         })
     }
     const getData = () => {
-            axios.get(`https://6315a3bb33e540a6d380ad11.mockapi.io/user`)
+            axios.get(`/user`)
                 .then((getData) => {
+                  console.log(getData.data);
                     setAPIData(getData.data);
                 })
     }
@@ -66,21 +68,20 @@ import { Link } from 'react-router-dom';
                 <StyledTableCell align='center'> #  </StyledTableCell>
                 <StyledTableCell align="right">First Name</StyledTableCell>
                 <StyledTableCell align="right">Last Name</StyledTableCell>
-                <StyledTableCell align="right">Checked</StyledTableCell>
+                {/* <StyledTableCell align="right">Checked</StyledTableCell> */}
                 <StyledTableCell align="center">Operations</StyledTableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody >
               {APIData.map((data) => (
                 <TableRow
                   key={data.name}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row" align='center'> {data.id}</TableCell>
-                  {/* <TableCell align="right">{data.id}</TableCell> */}
                   <TableCell align="right">{data.firstName}</TableCell>
                   <TableCell align="right">{data.lastName}</TableCell>
-                  <TableCell align="right">{data.checkbox ? 'Checked' : 'Unchecked'}</TableCell>
+                  {/* <TableCell align="right">{data.checkbox ? 'Checked' : 'Unchecked'}</TableCell> */}
                   <TableCell align="center"><Button component={Link} to="/update" variant="contained" onClick={() => onToggleEditMode(data)}>Edit</Button> <Button variant="contained" onClick={() =>onDelete(data.id) }>Delete</Button></TableCell>
                 </TableRow>
               ))}
