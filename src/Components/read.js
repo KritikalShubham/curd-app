@@ -26,6 +26,9 @@ import { Link } from 'react-router-dom';
 
     export default function Read() {
 
+    function indexNum(cell, row, enumObject, index) {
+        return (<div>{index+1}</div>) 
+    }
     const [APIData, setAPIData] = useState([]);
 
     const onToggleEditMode = data => {
@@ -65,9 +68,9 @@ import { Link } from 'react-router-dom';
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <StyledTableCell align='center'> #  </StyledTableCell>
-                <StyledTableCell align="right">First Name</StyledTableCell>
-                <StyledTableCell align="right">Last Name</StyledTableCell>
+                <StyledTableCell align='center'> User Id  </StyledTableCell>
+                <StyledTableCell align="center">First Name</StyledTableCell>
+                <StyledTableCell align="center">Last Name</StyledTableCell>
                 {/* <StyledTableCell align="right">Checked</StyledTableCell> */}
                 <StyledTableCell align="center">Operations</StyledTableCell>
               </TableRow>
@@ -79,10 +82,10 @@ import { Link } from 'react-router-dom';
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row" align='center'> {data.id}</TableCell>
-                  <TableCell align="right">{data.firstName}</TableCell>
-                  <TableCell align="right">{data.lastName}</TableCell>
+                  <TableCell align="center">{data.firstName}</TableCell>
+                  <TableCell align="center">{data.lastName}</TableCell>
                   {/* <TableCell align="right">{data.checkbox ? 'Checked' : 'Unchecked'}</TableCell> */}
-                  <TableCell align="center"><Button component={Link} to="/update" variant="contained" onClick={() => onToggleEditMode(data)}>Edit</Button> <Button variant="contained" onClick={() =>onDelete(data.id) }>Delete</Button></TableCell>
+                  <TableCell align="center"><Button component={Link} to="/newUpdate" variant="contained" onClick={() => onToggleEditMode(data)}>Edit</Button> <Button variant="contained" onClick={() =>onDelete(data.id) }>Delete</Button></TableCell>
                 </TableRow>
               ))}
             </TableBody>

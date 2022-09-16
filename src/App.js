@@ -6,6 +6,7 @@ import Update from './Components/update';
 import Navbar from './Components/navbar'
 import Test from './Components/test'
 import Form from './Components/form'
+import NewUpdate from './Components/newUpdate'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
             <Route exact path='create' element={<Create/>}></Route>
             <Route exact path='update' element={<Update/>}></Route>
             <Route exact path='form' element={<Form/>}></Route>
-            {/* <Route exact path='test' element={<Test/>}></Route> */}
+            <Route exact path='newUpdate' element={<NewUpdate/>}></Route>
             <Route exact path='read'  element={<Read/>}></Route>
 
       </Routes>

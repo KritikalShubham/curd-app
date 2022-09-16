@@ -6,14 +6,13 @@ import { Link } from 'react-router-dom';
 export default function Update() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [checkbox, setCheckbox] = useState(false);
-
+    // const [checkbox, setCheckbox] = useState(false);
     const [id, setID] = useState(null);
     useEffect(() => {
         setID(localStorage.getItem('ID'))
         setFirstName(localStorage.getItem('First Name'));
         setLastName(localStorage.getItem('Last Name'));
-        setCheckbox(localStorage.getItem('Checkbox Value'))
+        // setCheckbox(localStorage.getItem('Checkbox Value'))
 }, []);
 
 const updateAPIData = () => {
@@ -21,7 +20,7 @@ const updateAPIData = () => {
     axios.put(`/user/${id}`, {
         id, 
         firstName,
-         lastName,
+        lastName,
 	})
 }
 

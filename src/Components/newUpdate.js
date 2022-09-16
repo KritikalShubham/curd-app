@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useEffect , useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,29 +18,45 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 const theme = createTheme();
+
 //  content link for futher reference
 // https://github.com/mui/material-ui/blob/v5.10.4/docs/data/material/getting-started/templates/sign-up/SignUp.js
 
 export default function SignUp() { 
     const navigate = useNavigate();
+
+    let [firstName, setFirstName] = useState('');
+    let [lastName, setLastName] = useState('');
+    // const [checkbox, setCheckbox] = useState(false);
+    const [id, setID] = useState(null);
+    useEffect(() => {
+        setID(localStorage.getItem('ID'))
+        setFirstName(localStorage.getItem('First Name'));
+        setLastName(localStorage.getItem('Last Name'));
+}, []);
+
     const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    let firstName=data.get('firstName');
-    let lastName=data.get('lastName');
-    // let checkbox=data.get('checkBox')==='Checked'?true:false;
+    setID(data.get('id'));
+    setFirstName(data.get('firstName'));
+    setLastName(data.get('lastName'));
+    
     if(firstName==='' ||lastName===''){
-       alert('FirstName and Lastname is required');
-       navigate('/form');
+        alert('FirstName and Lastname is required');
+        navigate('/read');
     }else{
-    axios.post(`/user`, {
-        firstName,
-        lastName,
-        // checkbox   
-      }) 
-    navigate('/read');
+        firstName = firstName[0].toUpperCase()+firstName.slice(1);
+        lastName = lastName[0].toUpperCase()+lastName.slice(1);
+        console.log(firstName);
+        axios.put(`/user/${id}`, {
+            id,
+            firstName,
+            lastName,    
+        })
+        navigate('/read');
+        };
     }
-      };
 
   return (
     <ThemeProvider theme={theme}>
@@ -61,7 +77,7 @@ export default function SignUp() {
           </Avatar>
 
           <Typography component="h1" variant="h5">
-            Add User
+            Update User
           </Typography>
          
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -69,10 +85,12 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   name="firstName"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                //   label="First Name"
                   autoFocus
                 />
               </Grid>
@@ -80,17 +98,13 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                   id="lastName"
-                  label="Last Name"
+                //   label="Last Name"
                   name="lastName"
                 />
               </Grid>
-            {/* <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox name='checkBox' value="checkBox" color="primary" />}
-                  label="I agree to the Terms and Conditions"
-                />
-            </Grid> */}
             </Grid>
         
             <Button
@@ -99,7 +113,7 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Add User
+              Update User
             </Button>
         
           </Box>
