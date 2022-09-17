@@ -26,15 +26,12 @@ import { Link } from 'react-router-dom';
 
     export default function Read() {
 
-    function indexNum(cell, row, enumObject, index) {
-        return (<div>{index+1}</div>) 
-    }
     const [APIData, setAPIData] = useState([]);
 
     const onToggleEditMode = data => {
       console.log(data.id);
       console.log(data.firstName);
-      let { id, firstName, lastName, checkbox } = data;
+      let { id, firstName, lastName } = data;
         localStorage.setItem('ID', id);
         localStorage.setItem('First Name', firstName);
         localStorage.setItem('Last Name', lastName);
