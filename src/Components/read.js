@@ -29,9 +29,9 @@ import { Link } from 'react-router-dom';
     const [APIData, setAPIData] = useState([]);
 
     const onToggleEditMode = data => {
-      console.log(data.id);
-      console.log(data.firstName);
-      let { id, firstName, lastName } = data;
+      //console.log(data.id);
+      //console.log(data.firstName);
+      le { id, firstName, lastName } = data;
         localStorage.setItem('ID', id);
         localStorage.setItem('First Name', firstName);
         localStorage.setItem('Last Name', lastName);
