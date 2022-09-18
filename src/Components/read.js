@@ -31,7 +31,7 @@ import { Link } from 'react-router-dom';
     const onToggleEditMode = data => {
       //console.log(data.id);
       //console.log(data.firstName);
-      let { id, firstName, lastName } = data;
+      le { id, firstName, lastName } = data;
         localStorage.setItem('ID', id);
         localStorage.setItem('First Name', firstName);
         localStorage.setItem('Last Name', lastName);
