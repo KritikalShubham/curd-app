@@ -31,7 +31,7 @@ import { Link } from 'react-router-dom';
     const onToggleEditMode = data => {
       //console.log(data.id);
       //console.log(data.firstName);
-      le { id, firstName, lastName } = data;
+      let { id, firstName, lastName } = data;
         localStorage.setItem('ID', id);
         localStorage.setItem('First Name', firstName);
         localStorage.setItem('Last Name', lastName);
@@ -46,7 +46,7 @@ import { Link } from 'react-router-dom';
             })
         }, [])
  
-    const onDelete = (id) => {
+    cons onDelete = (id) => {
         axios.delete(`/user/${id}`)
         .then(() => {
             getData();
