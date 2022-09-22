@@ -13,7 +13,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-
+    //this code lines are add to check sonar code smells functionality check pls ignore this line for futher ref.
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.common.black,
@@ -29,8 +29,11 @@ import { Link } from 'react-router-dom';
     const [APIData, setAPIData] = useState([]);
 
     const onToggleEditMode = data => {
-      console.log(data.id);
-      console.log(data.firstName);
+      //console.log(data.id);
+      //console.log(data.firstName);
+      //console.log(data.firstName);
+      //console.log(data.firstName);
+      //console.log(data.firstName);
       let { id, firstName, lastName } = data;
         localStorage.setItem('ID', id);
         localStorage.setItem('First Name', firstName);
